@@ -22,12 +22,12 @@ export const POST = async (request, { params }) => {
 export const PATCH = async (request, { params }) => {
   try {
     await connectToDB();
-    const { sales } = await request.json();
+    const { sales, revenue } = await request.json();
     const { teamName } = params;
 
     const team = await Team.findOneAndUpdate(
       { teamName: teamName },
-      { sales: sales },
+      { sales: sales, revenue: revenue },
       { new: true }
     );
 

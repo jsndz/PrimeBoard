@@ -14,6 +14,7 @@ const ContactForm = () => {
     code: "",
   });
   const [sales, setSales] = useState<number>(0);
+  const [revenue, setRevenue] = useState<number>(0);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [productUpdate, setProductUpdate] = useState<boolean>(false);
   const router = useRouter();
@@ -33,13 +34,17 @@ const ContactForm = () => {
     const value = parseFloat(e.target.value);
     setSales(value);
   };
+  const handleRevenueChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const value = parseFloat(e.target.value);
+    setRevenue(value);
+  };
   const handleSales = async () => {
     try {
-      console.log("heee");
-
       const response = await axios.patch(
         `/api/team/${formData.teamName}`,
-        { sales: sales },
+        { sales: sales, revenue: revenue },
         {
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +52,7 @@ const ContactForm = () => {
         }
       );
       if (response.status === 200) {
-        console.log("Triggering refresh"); // Debugging line
+        console.log("Triggering refresh");
         triggerRefresh();
       }
     } catch (error) {
@@ -100,7 +105,16 @@ const ContactForm = () => {
             onChange={handleSalesChange}
             className="w-full p-3 rounded dark:bg-gray-100"
           />
-
+          <label htmlFor="sales" className="text-sm">
+            Revenue
+          </label>
+          <input
+            id="revenue"
+            type="number"
+            value={revenue}
+            onChange={handleRevenueChange}
+            className="w-full p-3 rounded dark:bg-gray-100"
+          />
           <button
             onClick={handleSales}
             className="w-full bg-[#EA3A36] p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-violet-600 dark:text-gray-50"

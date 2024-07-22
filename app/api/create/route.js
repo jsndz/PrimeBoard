@@ -2,7 +2,7 @@ import Team from "@/models/team";
 import { connectToDB } from "@/util/database";
 
 export const POST = async (req, res) => {
-  const { teamName, code, productName, sales } = await req.json();
+  const { teamName, code, productName, sales, revenue } = await req.json();
 
   try {
     await connectToDB();
@@ -11,6 +11,7 @@ export const POST = async (req, res) => {
       code,
       productName,
       sales,
+      revenue,
     });
     return new Response(JSON.stringify(team), { status: 201 });
   } catch (error) {

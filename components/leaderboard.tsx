@@ -38,10 +38,16 @@ export function Leaderboard() {
         console.log(error);
       }
     };
-    init();
+
+    const intervalId = setInterval(() => {
+      init();
+    }, 10000);
+
+    return () => clearInterval(intervalId);
   }, [refresh]);
+
   useEffect(() => {
-    console.log("Leaderboard component refreshed"); // Debugging line
+    console.log("Leaderboard component refreshed");
   }, [refresh]);
   const [sortColumn, setSortColumn] = useState<keyof Products>("sales");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
@@ -110,7 +116,7 @@ export function Leaderboard() {
                         {product.sales}
                       </TableCell>
                       <TableCell className="text-right text-[#0077b6]">
-                        {/* {product.revenue.toLocaleString()} */}
+                        {product.revenue?.toLocaleString()}
                       </TableCell>
                     </TableRow>
                   ))}

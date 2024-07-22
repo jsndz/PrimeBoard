@@ -7,6 +7,7 @@ type FormData = {
   code: string;
   productName: string;
   sales: number;
+  revenue: number;
 };
 
 const ContactForm = () => {
@@ -14,6 +15,7 @@ const ContactForm = () => {
     teamName: "",
     productName: "",
     code: "",
+    revenue: 0,
     sales: 0,
   });
 
@@ -100,7 +102,18 @@ const ContactForm = () => {
             className="w-full p-3 rounded dark:bg-gray-100"
           />
         </div>
-
+        <div>
+          <label htmlFor="revenue" className="text-sm">
+            Revenue
+          </label>
+          <input
+            id="revenue"
+            type="number"
+            value={formData.revenue}
+            onChange={handleChange}
+            className="w-full p-3 rounded dark:bg-gray-100"
+          />
+        </div>
         <button
           type="submit"
           className="w-full bg-[#EA3A36] p-3 text-sm font-bold tracking-wide uppercase rounded dark:bg-violet-600 dark:text-gray-50"
