@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import "./ranking.css";
 import {
   Table,
   TableHeader,
@@ -71,7 +72,57 @@ export function Leaderboard() {
   return (
     <div className="bg-[#f5f5f5] min-h-screen w-full flex flex-col">
       <main className="flex-1 p-4 md:p-6">
-        <div className="container mx-auto">
+        <div className="topLeadersList mb-8">
+          {sortedProducts.map((product, index) => (
+            <div
+              className={`leader ${
+                index + 1 === 1
+                  ? "leader-center"
+                  : index + 1 === 2
+                  ? "leader-left"
+                  : "leader-right"
+              }`}
+              key={index}
+            >
+              {index + 1 <= 3 && (
+                <div className="containerImage flex flex-col items-center">
+                  <div className="relative mb-4">
+                    <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10 absolute -top-6 -left-4">
+                      {index + 1}
+                    </span>
+                    <svg
+                      id="crown1"
+                      fill={
+                        index + 1 === 1
+                          ? "#ffc107"
+                          : index + 1 === 2
+                          ? "#c0c0c0"
+                          : "#cd7f32"
+                      }
+                      data-name="Layer 1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 100 50"
+                      width={
+                        index + 1 === 1 ? "90" : index + 1 === 2 ? "65" : "45"
+                      }
+                      height={index + 1 === 1 ? "45" : "25"}
+                    >
+                      <polygon
+                        className="cls-1"
+                        points="12.7 50 87.5 50 100 0 75 25 50 0 25.6 25 0 0 12.7 50"
+                      />
+                    </svg>
+                  </div>
+                  <div className="text-white text-center text-xl">
+                    {product.productName}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="container mx-auto mt-8">
           <Card className="bg-[#ffffff] border-[#0077b6]">
             <CardContent>
               <Table>
@@ -116,7 +167,7 @@ export function Leaderboard() {
                         {product.sales}
                       </TableCell>
                       <TableCell className="text-right text-[#0077b6]">
-                        {product.revenue?.toLocaleString()}
+                        {product.revenue}
                       </TableCell>
                     </TableRow>
                   ))}

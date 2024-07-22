@@ -1,0 +1,55 @@
+.topLeadersList {
+  display: flex;
+  position: relative;
+  min-height: 120px;
+  padding-top: 3rem;
+  justify-content: space-between;
+}
+
+.leader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+
+.leader-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.leader-left {
+  left: 15%;
+}
+
+.leader-right {
+  right: 15%;
+}
+
+.containerImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crown {
+  position: relative;
+}
+
+.crown-center svg {
+  width: 3rem; /* Increase size specifically for the center leader */
+  height: auto;
+}
+
+.crown svg {
+  width: 2rem; /* Default size for other leaders */
+  height: auto;
+}
+
+.leaderName {
+  position: relative;
+  text-align: center;
+  color: black;
+  font-size: 22px;
+  margin-top: 0.5rem; /* Adjust spacing as needed */
+}
