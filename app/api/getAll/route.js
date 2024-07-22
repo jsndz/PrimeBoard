@@ -1,8 +1,9 @@
 import Team from "@/models/team";
 import { connectToDB } from "@/util/database";
 
-export const GET = async (req, res) => {
+export const GET = async (request) => {
   try {
+    console.log(request.url);
     await connectToDB();
     const team = await Team.find();
     console.log(team);
