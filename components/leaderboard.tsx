@@ -37,7 +37,7 @@ export function Leaderboard() {
       }
     };
     init();
-  });
+  }, []);
   const [sortColumn, setSortColumn] = useState<keyof Products>("sales");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
@@ -96,7 +96,7 @@ export function Leaderboard() {
                   {sortedProducts.map((product, index) => (
                     <TableRow key={product.id}>
                       <TableCell className="font-medium text-[#ff6b00]">
-                        {index}
+                        {index + 1}
                       </TableCell>
                       <TableCell className="text-[#0077b6]">
                         {product.productName}
