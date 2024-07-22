@@ -10,7 +10,7 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-
+import { useSales } from "@/context/SalesContext";
 interface Products {
   id: number;
   teamName: string;
@@ -21,6 +21,8 @@ interface Products {
 }
 export function Leaderboard() {
   const [products, setProducts] = useState<Products[]>([]);
+  const { refresh } = useSales();
+  console.log(refresh);
 
   useEffect(() => {
     const init = async () => {
@@ -30,14 +32,17 @@ export function Leaderboard() {
             "Content-Type": "application/json",
           },
         });
-        // console.log(response.data);
         setProducts(response.data);
+        console.log(refresh);
       } catch (error) {
         console.log(error);
       }
     };
     init();
-  }, []);
+  }, [refresh]);
+  useEffect(() => {
+    console.log("Leaderboard component refreshed"); // Debugging line
+  }, [refresh]);
   const [sortColumn, setSortColumn] = useState<keyof Products>("sales");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 

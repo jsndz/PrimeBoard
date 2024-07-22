@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import { useSales } from "../../context/SalesContext";
 type FormData = {
   teamName: string;
   code: string;
@@ -17,7 +17,7 @@ const ContactForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [productUpdate, setProductUpdate] = useState<boolean>(false);
   const router = useRouter();
-
+  const { triggerRefresh } = useSales();
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -35,6 +35,8 @@ const ContactForm = () => {
   };
   const handleSales = async () => {
     try {
+      console.log("heee");
+
       const response = await axios.patch(
         `/api/team/${formData.teamName}`,
         { sales: sales },
@@ -44,6 +46,10 @@ const ContactForm = () => {
           },
         }
       );
+      if (response.status === 200) {
+        console.log("Triggering refresh"); // Debugging line
+        triggerRefresh();
+      }
     } catch (error) {
       console.log(error);
     }
