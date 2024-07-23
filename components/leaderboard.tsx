@@ -73,9 +73,11 @@ export function Leaderboard() {
 
   return (
     <div className="bg-leaderboard-bg bg-full-cover bg-no-repeat min-h-screen w-full flex flex-col ">
-      <h2 className="sevillana-regular flex flex-col items-center justify-center text-center  text-[#FF5733] text-7xl mb-8">
-        Leaderboard
-      </h2>
+      <h1 className="relative text-center text-6xl mt-8 flex flex-col items-center justify-center">
+        <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FF6F61] to-[#D83A56] animate-fade-in">
+          Leaderboard
+        </span>
+      </h1>
 
       <main className="flex-1 p-4 md:p-6">
         <div className="topLeadersList mb-8">
@@ -120,7 +122,7 @@ export function Leaderboard() {
                     </svg>
                   </div>
                   <div className="text-white text-center text-xl">
-                    {product.productName}
+                    {`${product.productName}`}
                   </div>
                 </div>
               )}
@@ -167,7 +169,7 @@ export function Leaderboard() {
                         {index + 1}
                       </TableCell>
                       <TableCell className="text-[#0077b6]">
-                        {product.productName}
+                        {`${product.productName}  (${product.teamName})`}
                       </TableCell>
                       <TableCell className="text-right text-[#0077b6]">
                         {product.sales}
