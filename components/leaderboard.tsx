@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import "./ranking.css";
+
 import {
   Table,
   TableHeader,
@@ -12,6 +13,7 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { useSales } from "@/context/SalesContext";
+import Image from "next/image";
 interface Products {
   id: number;
   teamName: string;
@@ -70,7 +72,11 @@ export function Leaderboard() {
   });
 
   return (
-    <div className="bg-[#f5f5f5] min-h-screen w-full flex flex-col">
+    <div className="bg-leaderboard-bg bg-full-cover bg-no-repeat min-h-screen w-full flex flex-col ">
+      <h2 className="sevillana-regular flex flex-col items-center justify-center text-center  text-[#FF5733] text-7xl mb-8">
+        Leaderboard
+      </h2>
+
       <main className="flex-1 p-4 md:p-6">
         <div className="topLeadersList mb-8">
           {sortedProducts.map((product, index) => (

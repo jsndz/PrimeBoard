@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const Page = () => {
   return (
-    <div>
-      <nav className="relative z-20 bg-white bg-opacity-80 shadow-md">
+    <div className="bg-main-bg bg-full-cover bg-no-repeat min-h-screen w-full flex flex-col  bg-center">
+      <nav className="relative z-20 bg-opacity-80 shadow-md">
         <div className="flex flex-col items-center py-4 px-6 mx-auto">
           <Image
             src="/innoventure.png"
@@ -17,7 +17,7 @@ const Page = () => {
         </div>
       </nav>
 
-      <main className="text-center mt-12">
+      <main className="flex-1 text-center mt-12">
         <div className="relative flex flex-col items-center">
           <Image
             src="/primebg.png"
@@ -26,13 +26,13 @@ const Page = () => {
             alt="Prime Background"
             className="w-full h-auto max-w-full"
           />
-          <span className=" bottom-4 text-[#EA3A36] text-2xl font-semibold bg-white px-4 py-2 rounded-lg mt-9">
+          <span className="bottom-4 text-[#EA3A36] text-2xl font-semibold px-4 py-2 rounded-lg mt-9">
             Accelerated Entrepreneurial Experience
           </span>
         </div>
 
         <section className="mt-12 px-6">
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-white max-w-3xl mx-auto">
             Prime 2024 is the ultimate platform for showcasing the top products
             of the year. Join us as we celebrate innovation, excellence, and the
             incredible achievements of our participants. From cutting-edge
@@ -49,7 +49,7 @@ const Page = () => {
             </button>
           </Link>
           <Link href="/form">
-            <button className="mt-4 border-2 border-[#ff8d35] rounded-lg px-4 py-2 text-[#ff8d35] cursor-pointer hover:bg-[#ff8d35] hover:text-[#FFFFFF] transition-colors duration-300">
+            <button className="mt-4 border-2 border-[#ff8d35] rounded-full px-4 py-2 text-[#ff8d35] cursor-pointer hover:bg-[#ff8d35] hover:text-[#FFFFFF] transition-colors duration-300">
               Login
             </button>
           </Link>
