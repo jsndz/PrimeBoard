@@ -131,32 +131,32 @@ export function Leaderboard() {
         </div>
 
         <div className="container mx-auto mt-8">
-          <Card className="bg-[#ffffff] border-[#0077b6]">
+          <Card className="bg-black border-[#0077b6]">
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[50px]">Rank</TableHead>
-                    <TableHead>Product</TableHead>
+                    <TableHead className="w-[50px] text-white">Rank</TableHead>
+                    <TableHead className="text-white">Product</TableHead>
                     <TableHead
-                      className="cursor-pointer text-right text-[#0077b6]"
+                      className="cursor-pointer text-right text-[#ffffff]"
                       onClick={() => handleSort("sales")}
                     >
                       <div className="flex items-center justify-end gap-2">
                         Total Sales
                         {sortColumn === "sales" && (
-                          <ArrowUpDownIcon className="h-4 w-4 text-[#0077b6]" />
+                          <ArrowUpDownIcon className="h-4 w-4 text-[#ffffff]" />
                         )}
                       </div>
                     </TableHead>
                     <TableHead
-                      className="cursor-pointer text-right text-[#0077b6]"
+                      className="cursor-pointer text-right text-[#ffffff]"
                       onClick={() => handleSort("revenue")}
                     >
                       <div className="flex items-center justify-end gap-2">
                         Revenue
                         {sortColumn === "revenue" && (
-                          <ArrowUpDownIcon className="h-4 w-4 text-[#0077b6]" />
+                          <ArrowUpDownIcon className="h-4 w-4 text-[#ffffff]" />
                         )}
                       </div>
                     </TableHead>
@@ -165,16 +165,16 @@ export function Leaderboard() {
                 <TableBody>
                   {sortedProducts.map((product, index) => (
                     <TableRow key={product.id}>
-                      <TableCell className="font-medium text-[#ff6b00]">
+                      <TableCell className="font-bold  text-[#ff6b00]">
                         {index + 1}
                       </TableCell>
-                      <TableCell className="text-[#0077b6]">
+                      <TableCell className="text-[#ffffff] font-bold">
                         {`${product.productName}  (${product.teamName})`}
                       </TableCell>
-                      <TableCell className="text-right text-[#0077b6]">
+                      <TableCell className="text-right font-bold text-[#ffffff]">
                         {product.sales}
                       </TableCell>
-                      <TableCell className="text-right text-[#0077b6]">
+                      <TableCell className="text-right font-bold text-[#ffffff]">
                         {product.revenue}
                       </TableCell>
                     </TableRow>
